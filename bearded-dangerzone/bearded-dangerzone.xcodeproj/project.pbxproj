@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		038C3F3017A5896200E66B95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038C3F2F17A5896200E66B95 /* Foundation.framework */; };
+		038C3F3217A5896200E66B95 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038C3F3117A5896200E66B95 /* CoreGraphics.framework */; };
+		038C3F3417A5896200E66B95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038C3F3317A5896200E66B95 /* UIKit.framework */; };
+		038C3F3A17A5896200E66B95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038C3F3817A5896200E66B95 /* InfoPlist.strings */; };
+		038C3F3C17A5896200E66B95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C3F3B17A5896200E66B95 /* main.m */; };
+		038C3F4017A5896200E66B95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C3F3F17A5896200E66B95 /* AppDelegate.m */; };
+		038C3F4217A5896200E66B95 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 038C3F4117A5896200E66B95 /* Images.xcassets */; };
+		038C3F4917A5896200E66B95 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038C3F4817A5896200E66B95 /* XCTest.framework */; };
+		038C3F4A17A5896200E66B95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038C3F2F17A5896200E66B95 /* Foundation.framework */; };
+		038C3F4B17A5896200E66B95 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038C3F3317A5896200E66B95 /* UIKit.framework */; };
+		038C3F5317A5896200E66B95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 038C3F5117A5896200E66B95 /* InfoPlist.strings */; };
+		038C3F5517A5896200E66B95 /* bearded_dangerzoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C3F5417A5896200E66B95 /* bearded_dangerzoneTests.m */; };
+		038C3F5F17A58D6300E66B95 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038C3F5E17A58D6300E66B95 /* Storyboard.storyboard */; };
+		038C3F6217A5BAE900E66B95 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C3F6117A5BAE900E66B95 /* NewItemViewController.m */; };
+		038C3F6517A5D91C00E66B95 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C3F6417A5D91C00E66B95 /* Item.m */; };
+		038C3F6817A5E09700E66B95 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C3F6717A5E09700E66B95 /* Account.m */; };
+		038C3F6B17A5E4D900E66B95 /* AccountItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C3F6A17A5E4D900E66B95 /* AccountItemsViewController.m */; };
+		038C3F6E17A5EC1700E66B95 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C3F6D17A5EC1700E66B95 /* Utils.m */; };
+		B09AC5D52CF5469E940F408A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D9E624EF2046738F610B7B /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		038C3F4C17A5896200E66B95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 038C3F2417A5896200E66B95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 038C3F2B17A5896200E66B95;
+			remoteInfo = "bearded-dangerzone";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		038C3F2C17A5896200E66B95 /* bearded-dangerzone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bearded-dangerzone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		038C3F2F17A5896200E66B95 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		038C3F3117A5896200E66B95 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		038C3F3317A5896200E66B95 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		038C3F3717A5896200E66B95 /* bearded-dangerzone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bearded-dangerzone-Info.plist"; sourceTree = "<group>"; };
+		038C3F3917A5896200E66B95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		038C3F3B17A5896200E66B95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		038C3F3D17A5896200E66B95 /* bearded-dangerzone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bearded-dangerzone-Prefix.pch"; sourceTree = "<group>"; };
+		038C3F3E17A5896200E66B95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		038C3F3F17A5896200E66B95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		038C3F4117A5896200E66B95 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		038C3F4717A5896200E66B95 /* bearded-dangerzoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bearded-dangerzoneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		038C3F4817A5896200E66B95 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		038C3F5017A5896200E66B95 /* bearded-dangerzoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bearded-dangerzoneTests-Info.plist"; sourceTree = "<group>"; };
+		038C3F5217A5896200E66B95 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		038C3F5417A5896200E66B95 /* bearded_dangerzoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bearded_dangerzoneTests.m; sourceTree = "<group>"; };
+		038C3F5E17A58D6300E66B95 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		038C3F6017A5BAE900E66B95 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
+		038C3F6117A5BAE900E66B95 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
+		038C3F6317A5D91C00E66B95 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		038C3F6417A5D91C00E66B95 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		038C3F6617A5E09700E66B95 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		038C3F6717A5E09700E66B95 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		038C3F6917A5E4D900E66B95 /* AccountItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountItemsViewController.h; sourceTree = "<group>"; };
+		038C3F6A17A5E4D900E66B95 /* AccountItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountItemsViewController.m; sourceTree = "<group>"; };
+		038C3F6C17A5EC1700E66B95 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ../Utils.h; sourceTree = "<group>"; };
+		038C3F6D17A5EC1700E66B95 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = ../Utils.m; sourceTree = "<group>"; };
+		7BF5532FE84B40659656052E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		A5D9E624EF2046738F610B7B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		038C3F2917A5896200E66B95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				038C3F3217A5896200E66B95 /* CoreGraphics.framework in Frameworks */,
+				038C3F3417A5896200E66B95 /* UIKit.framework in Frameworks */,
+				038C3F3017A5896200E66B95 /* Foundation.framework in Frameworks */,
+				B09AC5D52CF5469E940F408A /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		038C3F4417A5896200E66B95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				038C3F4917A5896200E66B95 /* XCTest.framework in Frameworks */,
+				038C3F4B17A5896200E66B95 /* UIKit.framework in Frameworks */,
+				038C3F4A17A5896200E66B95 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		038C3F2317A5896200E66B95 = {
+			isa = PBXGroup;
+			children = (
+				038C3F3517A5896200E66B95 /* bearded-dangerzone */,
+				038C3F4E17A5896200E66B95 /* bearded-dangerzoneTests */,
+				038C3F2E17A5896200E66B95 /* Frameworks */,
+				038C3F2D17A5896200E66B95 /* Products */,
+				7BF5532FE84B40659656052E /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		038C3F2D17A5896200E66B95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				038C3F2C17A5896200E66B95 /* bearded-dangerzone.app */,
+				038C3F4717A5896200E66B95 /* bearded-dangerzoneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		038C3F2E17A5896200E66B95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				038C3F2F17A5896200E66B95 /* Foundation.framework */,
+				038C3F3117A5896200E66B95 /* CoreGraphics.framework */,
+				038C3F3317A5896200E66B95 /* UIKit.framework */,
+				038C3F4817A5896200E66B95 /* XCTest.framework */,
+				A5D9E624EF2046738F610B7B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		038C3F3517A5896200E66B95 /* bearded-dangerzone */ = {
+			isa = PBXGroup;
+			children = (
+				038C3F6C17A5EC1700E66B95 /* Utils.h */,
+				038C3F6D17A5EC1700E66B95 /* Utils.m */,
+				038C3F3E17A5896200E66B95 /* AppDelegate.h */,
+				038C3F3F17A5896200E66B95 /* AppDelegate.m */,
+				038C3F4117A5896200E66B95 /* Images.xcassets */,
+				038C3F3617A5896200E66B95 /* Supporting Files */,
+				038C3F5E17A58D6300E66B95 /* Storyboard.storyboard */,
+				038C3F6017A5BAE900E66B95 /* NewItemViewController.h */,
+				038C3F6117A5BAE900E66B95 /* NewItemViewController.m */,
+				038C3F6317A5D91C00E66B95 /* Item.h */,
+				038C3F6417A5D91C00E66B95 /* Item.m */,
+				038C3F6617A5E09700E66B95 /* Account.h */,
+				038C3F6717A5E09700E66B95 /* Account.m */,
+				038C3F6917A5E4D900E66B95 /* AccountItemsViewController.h */,
+				038C3F6A17A5E4D900E66B95 /* AccountItemsViewController.m */,
+			);
+			path = "bearded-dangerzone";
+			sourceTree = "<group>";
+		};
+		038C3F3617A5896200E66B95 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				038C3F3717A5896200E66B95 /* bearded-dangerzone-Info.plist */,
+				038C3F3817A5896200E66B95 /* InfoPlist.strings */,
+				038C3F3B17A5896200E66B95 /* main.m */,
+				038C3F3D17A5896200E66B95 /* bearded-dangerzone-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		038C3F4E17A5896200E66B95 /* bearded-dangerzoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				038C3F5417A5896200E66B95 /* bearded_dangerzoneTests.m */,
+				038C3F4F17A5896200E66B95 /* Supporting Files */,
+			);
+			path = "bearded-dangerzoneTests";
+			sourceTree = "<group>";
+		};
+		038C3F4F17A5896200E66B95 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				038C3F5017A5896200E66B95 /* bearded-dangerzoneTests-Info.plist */,
+				038C3F5117A5896200E66B95 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		038C3F2B17A5896200E66B95 /* bearded-dangerzone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 038C3F5817A5896200E66B95 /* Build configuration list for PBXNativeTarget "bearded-dangerzone" */;
+			buildPhases = (
+				02A4686DA9304FB989FEEB25 /* Check Pods Manifest.lock */,
+				038C3F2817A5896200E66B95 /* Sources */,
+				038C3F2917A5896200E66B95 /* Frameworks */,
+				038C3F2A17A5896200E66B95 /* Resources */,
+				42EA988FDCB34A378CC30271 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "bearded-dangerzone";
+			productName = "bearded-dangerzone";
+			productReference = 038C3F2C17A5896200E66B95 /* bearded-dangerzone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		038C3F4617A5896200E66B95 /* bearded-dangerzoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 038C3F5B17A5896200E66B95 /* Build configuration list for PBXNativeTarget "bearded-dangerzoneTests" */;
+			buildPhases = (
+				038C3F4317A5896200E66B95 /* Sources */,
+				038C3F4417A5896200E66B95 /* Frameworks */,
+				038C3F4517A5896200E66B95 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				038C3F4D17A5896200E66B95 /* PBXTargetDependency */,
+			);
+			name = "bearded-dangerzoneTests";
+			productName = "bearded-dangerzoneTests";
+			productReference = 038C3F4717A5896200E66B95 /* bearded-dangerzoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		038C3F2417A5896200E66B95 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Nicolas Ameghino";
+				TargetAttributes = {
+					038C3F4617A5896200E66B95 = {
+						TestTargetID = 038C3F2B17A5896200E66B95;
+					};
+				};
+			};
+			buildConfigurationList = 038C3F2717A5896200E66B95 /* Build configuration list for PBXProject "bearded-dangerzone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 038C3F2317A5896200E66B95;
+			productRefGroup = 038C3F2D17A5896200E66B95 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				038C3F2B17A5896200E66B95 /* bearded-dangerzone */,
+				038C3F4617A5896200E66B95 /* bearded-dangerzoneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		038C3F2A17A5896200E66B95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				038C3F3A17A5896200E66B95 /* InfoPlist.strings in Resources */,
+				038C3F4217A5896200E66B95 /* Images.xcassets in Resources */,
+				038C3F5F17A58D6300E66B95 /* Storyboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		038C3F4517A5896200E66B95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				038C3F5317A5896200E66B95 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02A4686DA9304FB989FEEB25 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		42EA988FDCB34A378CC30271 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		038C3F2817A5896200E66B95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				038C3F6517A5D91C00E66B95 /* Item.m in Sources */,
+				038C3F6217A5BAE900E66B95 /* NewItemViewController.m in Sources */,
+				038C3F4017A5896200E66B95 /* AppDelegate.m in Sources */,
+				038C3F6B17A5E4D900E66B95 /* AccountItemsViewController.m in Sources */,
+				038C3F6817A5E09700E66B95 /* Account.m in Sources */,
+				038C3F6E17A5EC1700E66B95 /* Utils.m in Sources */,
+				038C3F3C17A5896200E66B95 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		038C3F4317A5896200E66B95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				038C3F5517A5896200E66B95 /* bearded_dangerzoneTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		038C3F4D17A5896200E66B95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 038C3F2B17A5896200E66B95 /* bearded-dangerzone */;
+			targetProxy = 038C3F4C17A5896200E66B95 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		038C3F3817A5896200E66B95 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				038C3F3917A5896200E66B95 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		038C3F5117A5896200E66B95 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				038C3F5217A5896200E66B95 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		038C3F5617A5896200E66B95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		038C3F5717A5896200E66B95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		038C3F5917A5896200E66B95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BF5532FE84B40659656052E /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bearded-dangerzone/bearded-dangerzone-Prefix.pch";
+				INFOPLIST_FILE = "bearded-dangerzone/bearded-dangerzone-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		038C3F5A17A5896200E66B95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BF5532FE84B40659656052E /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bearded-dangerzone/bearded-dangerzone-Prefix.pch";
+				INFOPLIST_FILE = "bearded-dangerzone/bearded-dangerzone-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		038C3F5C17A5896200E66B95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bearded-dangerzone.app/bearded-dangerzone";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bearded-dangerzone/bearded-dangerzone-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "bearded-dangerzoneTests/bearded-dangerzoneTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		038C3F5D17A5896200E66B95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bearded-dangerzone.app/bearded-dangerzone";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bearded-dangerzone/bearded-dangerzone-Prefix.pch";
+				INFOPLIST_FILE = "bearded-dangerzoneTests/bearded-dangerzoneTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		038C3F2717A5896200E66B95 /* Build configuration list for PBXProject "bearded-dangerzone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				038C3F5617A5896200E66B95 /* Debug */,
+				038C3F5717A5896200E66B95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		038C3F5817A5896200E66B95 /* Build configuration list for PBXNativeTarget "bearded-dangerzone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				038C3F5917A5896200E66B95 /* Debug */,
+				038C3F5A17A5896200E66B95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		038C3F5B17A5896200E66B95 /* Build configuration list for PBXNativeTarget "bearded-dangerzoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				038C3F5C17A5896200E66B95 /* Debug */,
+				038C3F5D17A5896200E66B95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 038C3F2417A5896200E66B95 /* Project object */;
+}
