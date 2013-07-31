@@ -18,5 +18,6 @@
 
 -(void) addItem:(Item*) item;
 -(float) calculateBalance;
+-(NSSet*) tags;
 
 @end

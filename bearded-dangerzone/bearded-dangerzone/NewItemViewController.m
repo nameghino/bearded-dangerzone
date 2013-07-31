@@ -13,6 +13,8 @@
 #import "Account.h"
 #import "Item.h"
 
+static NSString* kItemTagSeparator = @",";
+
 @interface NewItemViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *addExpenseButton;
 @property (strong, nonatomic) IBOutlet UIButton *addIncomeButton;
@@ -25,15 +27,24 @@
 @property (strong, nonatomic) IBOutlet UIButton *moreOptionsButton;
 
 @property (nonatomic, strong) Account *account;
+@property (nonatomic, strong) UIImage *receiptSnapshot;
+
+@property (nonatomic, strong) NSSet *tags;
 
 @end
 
 static NSDateFormatter* dateFormatter;
+static NSDictionary* menuItemsAndMethods;
+
 @implementation NewItemViewController
 
 +(void)load {
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+    
+    menuItemsAndMethods = @{
+                            @"item list": NSStringFromSelector(@selector(showItemList:))
+                            };
 }
 
 -(void) setNextResponder:(id) sender {
@@ -62,20 +73,11 @@ static UIView* inputAccessoryToolbar;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
-        UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:@"next"
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:self
-                                                                    action:@selector(setNextResponder:)];
-        
-        UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                                target:nil
-                                                                                action:nil];
-        
         UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"done"
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(dismissKeyboard:)];
-        toolbar.items = @[nextItem, spacer, doneItem];
+        toolbar.items = @[doneItem];
         [toolbar sizeToFit];
         inputAccessoryToolbar = toolbar;
     });
@@ -85,6 +87,7 @@ static UIView* inputAccessoryToolbar;
 -(void) setup {
     Account *a = [Account loadDefaultSave] ? : [[Account alloc] init];
     self.account = a;
+    self.tags = [a tags];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -101,7 +104,6 @@ static UIView* inputAccessoryToolbar;
         [self setup];
     }
     return self;
-
 }
 
 -(void) resetForm:(id) sender {
@@ -115,7 +117,7 @@ static UIView* inputAccessoryToolbar;
     item.type = type;
     item.date = [dateFormatter dateFromString:self.itemDateTextField.text];
     item.value = [NSNumber numberWithFloat:[self.itemValueTextField.text floatValue]];
-    item.tags = [[self.itemTagsTextField.text componentsSeparatedByString:@","] map:^id(id obj) {
+    item.tags = [[self.itemTagsTextField.text componentsSeparatedByString:kItemTagSeparator] map:^id(id obj) {
         return [[obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]lowercaseString];
     }];
     [self.account addItem:item];
@@ -126,16 +128,47 @@ static UIView* inputAccessoryToolbar;
                                 handler:NULL];
     [self resetForm:nil];
     [self dismissKeyboard:nil];
+    self.tags = [self.account tags];
 }
 
 -(void) addExpense:(id) sender { [self addItemWithType:kItemTypeExpense]; }
 -(void) addIncome:(id) sender { [self addItemWithType:kItemTypeIncome]; }
 
+-(void) snapReceiptPicture:(id) sender {
+    if (![UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
+        [UIAlertView showAlertViewWithTitle:@"error"
+                                    message:@"no camera"
+                          cancelButtonTitle:@"ok"
+                          otherButtonTitles:nil handler:NULL];
+        return;
+    }
+    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+    imagePicker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+    imagePicker.delegate = self;
+
+    [self presentViewController:imagePicker
+                       animated:YES
+                     completion:NULL];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    for (UITextField* tf in @[self.itemValueTextField, self.itemDateTextField, self.itemTagsTextField]) {
-        tf.inputAccessoryView = [self accessoryToolbar];
+    
+    
+    UIView *accessoryToolbar = [self accessoryToolbar];
+    for (UITextField* tf in @[self.itemValueTextField, self.itemDateTextField]) {
+        tf.inputAccessoryView = accessoryToolbar;
     }
+    
+    [self.itemTagsTextField setAutocompleteWithDataSource:self
+                                                 delegate:self
+                                                customize:^(ACEAutocompleteInputView *inputView) {
+                                                    inputView.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+                                                }];
     
     [self.addExpenseButton addTarget:self
                               action:@selector(addExpense:)
@@ -144,6 +177,19 @@ static UIView* inputAccessoryToolbar;
     [self.addIncomeButton addTarget:self
                               action:@selector(addIncome:)
                     forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.snapReceiptButton addTarget:self
+                               action:@selector(snapReceiptPicture:)
+                     forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.itemTagsTextField addTarget:self
+                               action:@selector(suggestTags:)
+                     forControlEvents:UIControlEventEditingChanged];
+    
+    [self.moreOptionsButton addTarget:self
+                               action:@selector(showActionMenu:)
+                     forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -155,13 +201,78 @@ static UIView* inputAccessoryToolbar;
     // Dispose of any resources that can be recreated.
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showItemsListSegue"]) {
-        UINavigationController *nav = [segue destinationViewController];
-        AccountItemsViewController *aivc = nav.viewControllers[0];
-        aivc.account = self.account;
-        return;
+-(void) showActionMenu:(id) sender {
+    UIActionSheet *menu = [UIActionSheet actionSheetWithTitle:@"menu"];
+    [menu setCancelButtonWithTitle:@"cancel" handler:NULL];
+    for (NSString *menuKey in [[menuItemsAndMethods allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]) {
+        [menu addButtonWithTitle:menuKey handler:^{
+            SEL selector = NSSelectorFromString(menuItemsAndMethods[menuKey]);
+            [self performSelector:selector withObject:nil];
+        }];
     }
+    [menu showInView:self.view];
+}
+
+#pragma mark - Menu actions
+-(void) showItemList:(id) sender {
+    AccountItemsViewController *aivc = [[AccountItemsViewController alloc] initWithStyle:UITableViewStylePlain];
+    aivc.account = self.account;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:aivc];
+    [self presentViewController:nav animated:YES completion:NULL];
+    return;
+}
+
+#pragma mark - Image picker delegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    self.receiptSnapshot = info[UIImagePickerControllerOriginalImage];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - tags text field did change
+-(void) suggestTags:(id) sender {
+}
+
+#pragma mark - ACEAutocompleteDataSource
+-(NSUInteger)minimumCharactersToTrigger:(ACEAutocompleteInputView *)inputView { return 0; }
+
+-(void)inputView:(ACEAutocompleteInputView *)inputView itemsFor:(NSString *)query result:(void (^)(NSArray *))resultBlock {
+    
+    NSString *text = [[query componentsSeparatedByString:@","] lastObject];
+    NSSet *suggestedTags = [self.tags select:^BOOL(id obj) {
+        NSString *tag = obj;
+        return [tag hasPrefix:text];
+    }];
+    resultBlock([suggestedTags allObjects]);
+}
+
+-(CGFloat)inputView:(ACEAutocompleteInputView *)inputView widthForObject:(id)object {
+    NSString *string = object;
+    CGSize size = [string sizeWithAttributes:@{NSFontAttributeName: inputView.font}];
+    return size.width + 40.0f;
+}
+
+-(void)inputView:(ACEAutocompleteInputView *)inputView setObject:(id)object forView:(UIView *)view {
+    UILabel *label = (UILabel*)[view viewWithTag:102];
+    label.text = object;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.layer.cornerRadius = 12;
+    label.layer.backgroundColor = [UIColor lightGrayColor].CGColor;
+}
+
+#pragma mark - ACEAutocompleteDelegate
+-(void)textField:(UITextField *)textField didSelectObject:(id)object inInputView:(ACEAutocompleteInputView *)inputView {
+    NSMutableArray *tags = [[[textField.text componentsSeparatedByString:kItemTagSeparator] map:^id(id obj) {
+        return [obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }] mutableCopy];
+    
+    [tags removeLastObject];
+    [tags addObject:object];
+    
+    textField.text = [[tags componentsJoinedByString:kItemTagSeparator] stringByAppendingString:kItemTagSeparator];
 }
 
 @end

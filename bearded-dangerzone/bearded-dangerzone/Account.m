@@ -42,6 +42,16 @@
     }
 }
 
+-(NSSet *)tags {
+    NSMutableSet *tagSet = [NSMutableSet set];
+    [self.items each:^(id sender) {
+        Item *i = sender;
+        [tagSet addObjectsFromArray:i.tags];
+    }];
+    NSLog(@"Available tags: %@", tagSet);
+    return tagSet;
+}
+
 -(BOOL) save:(NSError**) error {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
     NSString *docsDir = [Utils applicationDocumentsDirectory];
@@ -55,7 +65,6 @@
                                                                                           encoding:NSASCIIStringEncoding]}];
     }
     return retval;
-    
 }
 
 +(Account*) loadDefaultSave {

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ACEAutocompleteBar/ACEAutocompleteBar.h>
 
-@interface NewItemViewController : UIViewController
+@interface NewItemViewController : UIViewController <UIImagePickerControllerDelegate, ACEAutocompleteDataSource, ACEAutocompleteDelegate>
 
 @end
