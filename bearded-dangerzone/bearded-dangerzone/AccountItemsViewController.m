@@ -73,8 +73,51 @@
     return cell;
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath { return YES; }
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.tableView beginUpdates];
+        [self.account.items removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView endUpdates];
+    }
+}
+
 -(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [NSString stringWithFormat:@"balance: $ %.02f", [self.account calculateBalance]];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    Item *item = self.account.items[indexPath.row];
+    if (item.receiptImage == nil) {
+        UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"no image"];
+        [alertView show];
+        double delayInSeconds = 0.75f;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [alertView dismissWithClickedButtonIndex:-1 animated:YES];
+        });
+        return;
+    }
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    imageView.userInteractionEnabled = YES;
+    imageView.image = item.receiptImage;
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    
+    [imageView addGestureRecognizer:tgr];
+    UIViewController *imageViewController = [[UIViewController alloc] init];
+    imageViewController.view = imageView;
+    
+    [self presentViewController:imageViewController animated:YES completion:NULL];
+
+    
 }
 
 @end

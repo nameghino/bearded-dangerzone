@@ -117,6 +117,7 @@ static UIView* inputAccessoryToolbar;
     item.type = type;
     item.date = [dateFormatter dateFromString:self.itemDateTextField.text];
     item.value = [NSNumber numberWithFloat:[self.itemValueTextField.text floatValue]];
+    item.receiptImage = self.receiptSnapshot;
     item.tags = [[self.itemTagsTextField.text componentsSeparatedByString:kItemTagSeparator] map:^id(id obj) {
         return [[obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]lowercaseString];
     }];
